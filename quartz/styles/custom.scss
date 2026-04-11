@@ -1,3 +1,56 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// Academic Tech theme — scholarly, navy + amber, Fraunces headings + serif body
+
+article h1,
+article h2,
+article h3 {
+  color: var(--secondary);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+article h1.article-title {
+  font-size: 2.6rem;
+  font-weight: 600;
+}
+
+article h2 {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--tertiary) 40%, transparent);
+}
+
+article p,
+article li {
+  line-height: 1.7;
+}
+
+a.internal,
+a.external {
+  color: var(--tertiary);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--tertiary) 40%, transparent);
+  text-underline-offset: 3px;
+}
+a.internal:hover,
+a.external:hover {
+  text-decoration-color: var(--tertiary);
+}
+
+article blockquote {
+  border-left: 3px solid var(--tertiary);
+  padding-left: 1rem;
+  font-style: italic;
+  color: var(--darkgray);
+}
+
+blockquote.callout[data-callout="tip"] {
+  --color: #b45309;
+  --border: #b4530966;
+  --bg: #b4530908;
+}
+:root[saved-theme="dark"] blockquote.callout[data-callout="tip"] {
+  --color: #fbbf24;
+  --border: #fbbf2466;
+  --bg: #fbbf2410;
+}
