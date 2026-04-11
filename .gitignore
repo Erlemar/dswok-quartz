@@ -2,6 +2,7 @@
 node_modules/
 public/
 content/
+src/redirects-map.js
 prof/
 tsconfig.tsbuildinfo
 .quartz-cache/
