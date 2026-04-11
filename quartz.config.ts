@@ -13,7 +13,10 @@ const config: QuartzConfig = {
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
-    analytics: null,
+    analytics: {
+      provider: "google",
+      tagId: "G-BJGMPLWXT4",
+    },
     locale: "en-US",
     baseUrl: "dswok.com",
     ignorePatterns: [
