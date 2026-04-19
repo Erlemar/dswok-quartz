@@ -1,6 +1,6 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
-import { NormalizeObsidianBlockMath } from "./quartz.user-plugins"
+import { NormalizeObsidianBlockMath, DefinitionLists } from "./quartz.user-plugins"
 
 /**
  * Quartz 4 Configuration
@@ -91,6 +91,7 @@ const config: QuartzConfig = {
         keepBackground: false,
       }),
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+      DefinitionLists(),
       Plugin.HardLineBreaks(),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
