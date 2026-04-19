@@ -1,6 +1,39 @@
 @use "./base.scss";
 
-// Academic Tech theme — scholarly, navy + amber, Fraunces headings + serif body
+// Reading-first theme — warm paper, cool ink, one quiet blue accent.
+// OKLCH tokens mirror the design handoff palette; extra tokens sit alongside
+// Quartz's generated --light/--secondary/--tertiary variables.
+
+:root {
+  --paper: oklch(0.985 0.005 85);
+  --paper-2: oklch(0.965 0.008 85);
+  --ink: oklch(0.22 0.01 260);
+  --ink-2: oklch(0.38 0.01 260);
+  --ink-3: oklch(0.55 0.01 260);
+  --rule: oklch(0.89 0.008 85);
+  --rule-2: oklch(0.94 0.008 85);
+  --accent: oklch(0.5 0.1 230);
+  --accent-ink: oklch(0.4 0.1 230);
+  --accent-tint: oklch(0.96 0.02 230);
+  --accent-tint-hover: oklch(0.93 0.03 230);
+  --chip-border: oklch(0.85 0.04 230);
+  --uiFont: "Inter", system-ui, sans-serif;
+}
+
+:root[saved-theme="dark"] {
+  --paper: oklch(0.22 0.01 260);
+  --paper-2: oklch(0.3 0.01 260);
+  --ink: oklch(0.95 0.005 85);
+  --ink-2: oklch(0.78 0.005 85);
+  --ink-3: oklch(0.6 0.01 260);
+  --rule: oklch(0.35 0.01 260);
+  --rule-2: oklch(0.3 0.01 260);
+  --accent: oklch(0.7 0.1 230);
+  --accent-ink: oklch(0.75 0.1 230);
+  --accent-tint: oklch(0.35 0.05 230);
+  --accent-tint-hover: oklch(0.4 0.06 230);
+  --chip-border: oklch(0.45 0.06 230);
+}
 
 article h1,
 article h2,
