@@ -2,7 +2,7 @@
 
 // Reading-first theme — warm paper, cool ink, one quiet blue accent.
 // OKLCH tokens mirror the design handoff palette; extra tokens sit alongside
-// Quartz's generated --light/--secondary/--tertiary variables.
+// Quartz's generated --light/--secondary/--tertiary variables (hex, for satori).
 
 :root {
   --paper: oklch(0.985 0.005 85);
@@ -35,55 +35,219 @@
   --chip-border: oklch(0.45 0.06 230);
 }
 
-article h1,
-article h2,
-article h3 {
-  color: var(--secondary);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-article h1.article-title {
-  font-size: 2.6rem;
-  font-weight: 600;
-}
-
-article h2 {
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--tertiary) 40%, transparent);
-}
+// -- Body prose ------------------------------------------------------------
 
 article p,
 article li {
-  line-height: 1.7;
+  font-family: var(--bodyFont);
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--ink);
 }
+
+// -- Headings --------------------------------------------------------------
+
+article h1,
+article h2,
+article h3,
+article h4 {
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+article h1.article-title {
+  font-family: var(--bodyFont);
+  font-size: 2.25rem; // 36px
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0 0 0.625rem;
+}
+
+article h2 {
+  font-family: var(--bodyFont);
+  font-size: 1.3125rem; // 21px
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin: 1.625rem 0 0.625rem;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+article h3 {
+  font-family: var(--uiFont);
+  font-size: 0.8125rem; // 13px
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: 1rem 0 0.5rem;
+}
+
+// -- Links: border-bottom accent, no underline -----------------------------
 
 a.internal,
 a.external {
-  color: var(--tertiary);
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--tertiary) 40%, transparent);
-  text-underline-offset: 3px;
+  color: var(--accent-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  transition: border-bottom 120ms ease, color 120ms ease;
 }
 a.internal:hover,
 a.external:hover {
-  text-decoration-color: var(--tertiary);
+  border-bottom-width: 2px;
+  color: var(--accent-ink);
+  text-decoration: none;
 }
 
+// -- Tag chips — pill, mono, quiet blue. First tag gets primary fill. -------
+
+article ul.tags {
+  gap: 6px;
+  margin: 0.5rem 0 0.25rem;
+}
+
+article ul.tags > li > a.tag-link,
+article ul.tags > li > a.internal.tag-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--codeFont);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  padding: 3px 9px 3px 8px;
+  border-radius: 999px;
+  background: var(--accent-tint);
+  color: var(--accent-ink);
+  border: 1px solid var(--chip-border);
+  text-decoration: none;
+  transition: background-color 120ms ease;
+}
+article ul.tags > li > a.tag-link::before {
+  content: "#";
+  opacity: 0.55;
+  margin-right: 1px;
+}
+article ul.tags > li > a.tag-link:hover {
+  background: var(--accent-tint-hover);
+  border-bottom: 1px solid var(--chip-border);
+}
+article ul.tags > li:first-child > a.tag-link {
+  background: var(--accent);
+  color: var(--paper);
+  border-color: var(--accent);
+}
+article ul.tags > li:first-child > a.tag-link::before {
+  opacity: 0.7;
+}
+article ul.tags > li:first-child > a.tag-link:hover {
+  color: var(--paper);
+  border-bottom: 1px solid var(--accent);
+}
+
+// -- Meta line: mono uppercase, `·` separator ------------------------------
+
+.content-meta {
+  font-family: var(--codeFont);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin: 0 0 14px;
+
+  &[show-comma="true"] > *:not(:last-child) {
+    margin-right: 8px;
+
+    &::after {
+      content: "·";
+      color: var(--rule);
+      margin-left: 8px;
+    }
+  }
+}
+
+// -- Definition lists: two-column grid -------------------------------------
+
+article dl {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0 20px;
+  margin: 0.5rem 0 0.875rem;
+}
+article dl dt {
+  font-family: var(--codeFont);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--accent-ink);
+  padding: 8px 0;
+  border-top: 1px solid var(--rule);
+}
+article dl dd {
+  font-family: var(--bodyFont);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+  padding: 8px 0;
+  border-top: 1px solid var(--rule);
+}
+article dl dd b,
+article dl dd strong {
+  font-family: var(--uiFont);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+// -- Prereqs strip (Prereqs component emits .prereqs markup) ----------------
+
+.prereqs {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  margin: 0 0 24px;
+  font-family: var(--uiFont);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-2);
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.prereqs .l {
+  font-family: var(--codeFont);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  flex-shrink: 0;
+}
+.prereqs a {
+  color: var(--accent-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+// -- Blockquote + callouts -------------------------------------------------
+
 article blockquote {
-  border-left: 3px solid var(--tertiary);
+  border-left: 3px solid var(--accent);
   padding-left: 1rem;
   font-style: italic;
-  color: var(--darkgray);
+  color: var(--ink-2);
 }
 
 blockquote.callout[data-callout="tip"] {
-  --color: #b45309;
-  --border: #b4530966;
-  --bg: #b4530908;
+  --color: var(--accent-ink);
+  --border: color-mix(in srgb, var(--accent) 40%, transparent);
+  --bg: color-mix(in srgb, var(--accent) 5%, transparent);
 }
 :root[saved-theme="dark"] blockquote.callout[data-callout="tip"] {
-  --color: #fbbf24;
-  --border: #fbbf2466;
-  --bg: #fbbf2410;
+  --color: var(--accent);
+  --border: color-mix(in srgb, var(--accent) 40%, transparent);
+  --bg: color-mix(in srgb, var(--accent) 10%, transparent);
 }
