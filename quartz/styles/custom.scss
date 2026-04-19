@@ -251,3 +251,181 @@ blockquote.callout[data-callout="tip"] {
   --border: color-mix(in srgb, var(--accent) 40%, transparent);
   --bg: color-mix(in srgb, var(--accent) 10%, transparent);
 }
+
+// -- Tag page: stat line, co-tag row, numbered note list -------------------
+
+.tag-page .tag-stat {
+  font-family: var(--codeFont);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin: 0 0 20px;
+
+  b {
+    color: var(--ink);
+    font-weight: 500;
+  }
+}
+
+.tag-page .co-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 24px;
+
+  .l {
+    font-family: var(--codeFont);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-right: 6px;
+    flex-shrink: 0;
+  }
+}
+
+.co-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--codeFont);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  padding: 3px 9px 3px 8px;
+  border-radius: 999px;
+  background: var(--accent-tint);
+  color: var(--accent-ink);
+  border: 1px solid var(--chip-border);
+  text-decoration: none;
+  transition: background-color 120ms ease;
+
+  .hash {
+    opacity: 0.55;
+    margin-right: 1px;
+  }
+
+  .count {
+    opacity: 0.6;
+    margin-left: 6px;
+  }
+
+  &:hover {
+    background: var(--accent-tint-hover);
+    color: var(--accent-ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--chip-border);
+  }
+
+  &.muted {
+    background: var(--paper);
+    color: var(--ink-2);
+    border-color: var(--rule);
+
+    &:hover {
+      background: var(--paper-2);
+      border-bottom: 1px solid var(--rule);
+    }
+  }
+}
+
+.tag-page .list-head {
+  font-family: var(--codeFont);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+
+  code {
+    font-size: inherit;
+    color: var(--ink-2);
+    padding: 0;
+    background: transparent;
+  }
+}
+
+.tag-page .tag-note-list {
+  display: block;
+}
+
+.tag-note-row {
+  display: grid;
+  grid-template-columns: 24px 1fr 90px;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  color: inherit;
+  text-decoration: none;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+
+  &:hover {
+    background: var(--paper-2);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .n {
+    font-family: var(--codeFont);
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+
+  .body {
+    min-width: 0;
+  }
+
+  .nm {
+    font-family: var(--bodyFont);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .desc {
+    font-family: var(--bodyFont);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+
+  .meta {
+    font-family: var(--codeFont);
+    font-size: 10px;
+    color: var(--ink-3);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .fold {
+    font-family: var(--codeFont);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-align: right;
+
+    b {
+      color: var(--ink);
+      font-weight: 500;
+    }
+  }
+}
+
+// Hide the default article-title on single-tag pages — TagContent provides its own copy
+body[data-slug^="tags/"] h1.article-title {
+  font-family: var(--bodyFont);
+  font-size: 2.125rem; // 34px
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0 0 0.25rem;
+}
