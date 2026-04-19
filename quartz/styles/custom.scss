@@ -167,37 +167,48 @@ article ul.tags > li:first-child > a.tag-link:hover {
   }
 }
 
-// -- Definition lists: two-column grid -------------------------------------
+// -- Term tables -----------------------------------------------------------
+// Activated via `cssclasses: [term-table]` in a note's frontmatter. Renders
+// a narrow mono term column + serif definition column with thin row rules,
+// mirroring the original dl-grid treatment. Plain markdown tables without
+// the cssclass keep Quartz's default styling.
 
-article dl {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 0 20px;
+article.term-table table {
+  width: 100%;
+  border-collapse: collapse;
   margin: 0.5rem 0 0.875rem;
-}
-article dl dt {
-  font-family: var(--codeFont);
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--accent-ink);
-  padding: 8px 0;
-  border-top: 1px solid var(--rule);
-}
-article dl dd {
-  font-family: var(--bodyFont);
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--ink);
-  margin: 0;
-  padding: 8px 0;
-  border-top: 1px solid var(--rule);
-}
-article dl dd b,
-article dl dd strong {
-  font-family: var(--uiFont);
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--ink);
+  table-layout: fixed;
+
+  thead { display: none; }
+
+  td {
+    vertical-align: baseline;
+    padding: 8px 0;
+    border-top: 1px solid var(--rule);
+  }
+  tr:last-child td { border-bottom: 1px solid var(--rule); }
+
+  td:first-child {
+    width: 160px;
+    padding-right: 20px;
+    font-family: var(--codeFont);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--accent-ink);
+  }
+  td:last-child {
+    font-family: var(--bodyFont);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+
+    b, strong {
+      font-family: var(--uiFont);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+  }
 }
 
 // -- Prereqs strip (Prereqs component emits .prereqs markup) ----------------
