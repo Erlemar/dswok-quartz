@@ -27,7 +27,7 @@ const config: QuartzConfig = {
       ".claude",
       ".idea",
       "CV",
-      "Excalidraw",
+      "Excalidraw/**",
       "claude.md",
       "improvement_plan.md",
       "ideas_1.md",
