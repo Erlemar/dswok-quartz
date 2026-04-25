@@ -20,13 +20,10 @@ const config: QuartzConfig = {
     locale: "en-US",
     baseUrl: "dswok.com",
     ignorePatterns: [
-      "private",
-      "templates",
       ".obsidian",
       ".smart-connections",
       ".claude",
       ".idea",
-      "CV",
       "Excalidraw/**",
       "claude.md",
       "improvement_plan.md",
