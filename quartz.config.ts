@@ -24,7 +24,7 @@ const config: QuartzConfig = {
       ".smart-connections",
       ".claude",
       ".idea",
-      "Excalidraw/**",
+      "**/*.excalidraw.md",
       "claude.md",
       "improvement_plan.md",
       "ideas_1.md",
