@@ -1,6 +1,6 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
-import { NormalizeObsidianBlockMath } from "./quartz.user-plugins"
+import { NormalizeObsidianBlockMath, LlmsTxt } from "./quartz.user-plugins"
 
 /**
  * Quartz 4 Configuration
@@ -108,6 +108,7 @@ const config: QuartzConfig = {
       }),
       Plugin.Assets(),
       Plugin.Static(),
+      LlmsTxt(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
       // Comment out CustomOgImages to speed up build time
